@@ -34,7 +34,6 @@
                     <i class="bi bi-box-arrow-in-right text-black"></i>
                     <span class="text-[15px] ml-4 text-black">Logout</span>
                 </div>
-
             </div>
         </div>
     </div>

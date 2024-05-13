@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Talk;
 
 class UserController extends Controller
 {
@@ -18,5 +19,17 @@ class UserController extends Controller
         $users = User::where('usertype', '!=', 'admin')->get();
 
         return view('pages.users', compact('users'));
+    }
+
+    public function count()
+    {
+        // Mengambil jumlah user dari tabel users
+        $totalUsers = User::count();
+
+        // Mengambil jumlah talk dari tabel talks
+        $totalTalks = Talk::count();
+
+        // Kemudian kirimkan data tersebut ke view
+        return view('pages.dashboard', compact('totalUsers', 'totalTalks'));
     }
 }

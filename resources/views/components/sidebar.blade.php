@@ -33,12 +33,8 @@
             <a href="/logout" class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-gray-200">
                     <i class="bi bi-box-arrow-in-right text-black"></i>
                     <span class="text-[15px] ml-4 text-black">Logout</span>
-<<<<<<< HEAD
-                </div>
-=======
             </a>
 
->>>>>>> 367e9f3711e8a18e81eb207a90110976819597a5
             </div>
         </div>
     </div>

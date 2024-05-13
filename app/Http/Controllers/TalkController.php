@@ -14,7 +14,7 @@ class TalkController extends Controller
         $talks = Talk::with('comments')->get();
         return view('pages.home', compact('talks'));
     }
-
+    
     public function create()
     {
         return view('pages.create');

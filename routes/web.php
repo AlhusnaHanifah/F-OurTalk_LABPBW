@@ -6,6 +6,7 @@ use App\Http\Controllers\TalkController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdmintalkController;
 
 //rute untuk user
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
@@ -31,6 +32,14 @@ Route::middleware('admin')->group(function () {
         return view('pages.dashboard');
     })->name('dashboard');
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+    Route::get('/talkadmin', function () {
+        return view('pages.talkadmin');
+    })->name('talkadmin');
+
+    Route::get('/admintalk', [AdmintalkController::class, 'index'])->name('admintalk');
+    Route::delete('/admindelete/{id}', [AdmintalkController::class, 'delete'])->name('admindelete');
+
 });
 
 Route::get('/profile', function () {

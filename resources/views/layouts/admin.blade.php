@@ -14,6 +14,7 @@
     <!-- Include SweetAlert via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
+    @include('components.navbar')
     @include('components.sidebar')
     <div class="main-content transition-all duration-1000 ml-0">
         @yield('content')

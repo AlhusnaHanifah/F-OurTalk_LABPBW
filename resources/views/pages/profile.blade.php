@@ -31,7 +31,7 @@
             </div>
             <!-- Tombol yang akan memicu modal -->
             <div class="flex justify-end">
-            <a href="#"
+            <a href="{{ route('editprofile') }}"
                 class="bg-blue-500 text-white text-lg rounded-full w-16 h-16 flex items-center justify-center"
                 data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="bi bi-pen"></i>

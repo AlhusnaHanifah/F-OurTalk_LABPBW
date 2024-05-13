@@ -50,6 +50,10 @@ Route::middleware('admin')->group(function () {
 Route::get('/profile', function () {
     return view('pages.profile');
 })->name('profile');
+Route::get('/editprofile', function () {
+    return view('pages.editprofile');
+})->name('editprofile');
+Route::post('/editprofile', [AuthController::class, 'update']);
 
 // Route::get('/', function () {
 //     return view('pages/profile');

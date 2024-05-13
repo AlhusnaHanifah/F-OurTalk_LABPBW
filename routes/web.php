@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TalkController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KomentarController;
+use App\Http\Controllers\UserController;
 
 //rute untuk user
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
@@ -29,5 +30,6 @@ Route::middleware('admin')->group(function () {
     Route::get('/dashboard', function () {
         return view('pages.dashboard');
     })->name('dashboard');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
 });
 

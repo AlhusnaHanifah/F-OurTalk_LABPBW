@@ -14,11 +14,16 @@
     <!-- Include SweetAlert via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
-    @include('components.navbar')
-    @include('components.sidebar')
-    <div class="main-content transition-all duration-1000 ml-0">
+    <div class="flex">
+    <div class="w-64"> <!-- Menambahkan kelas w-64 untuk mengatur lebar sidebar -->
+        @include('components.sidebar')
+    </div>
+    <div class="main-content transition-all duration-1000 ml-0 flex-1">
         @yield('content')
     </div>
+</div>
+
+
     
 </body>
 </html>

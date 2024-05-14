@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="relative p-70 top-[-208px] right-[-550px]">
-                <a href="{{ route('talkadmin.index') }}">
+                <a href="{{ route('admintalk') }}">
                     <div
                         class="flex flex-col px-6 py-6 overflow-hidden bg-white hover:bg-gradient-to-br hover:from-purple-400 hover:via-blue-400 hover:to-blue-500 rounded-xl shadow-lg duration-300 hover:shadow-2xl group">
                         <div class="relative w-full h-full px-4 sm:px-6 lg:px-8 flex items-center">

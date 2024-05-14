@@ -32,19 +32,24 @@ Route::middleware('admin')->group(function () {
         return view('pages.dashboard');
     })->name('dashboard');
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
-<<<<<<< Updated upstream
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('admin.users.delete');
 
     Route::get('/talkadmin', function () {
         return view('pages.talkadmin');
     })->name('talkadmin');
 
+
     Route::get('/admintalk', [AdmintalkController::class, 'index'])->name('admintalk');
     Route::delete('/admindelete/{id}', [AdmintalkController::class, 'delete'])->name('admindelete');
 
-=======
+
     Route::get('/count', [UserController::class, 'count'])->name('users.count');
     Route::get('/dashboard', [UserController::class, 'count'])->name('dashboard');
->>>>>>> Stashed changes
+
+
+    Route::get('/count', [UserController::class, 'count'])->name('users.count');
+    Route::get('/dashboard', [UserController::class, 'count'])->name('dashboard');
+
 });
 
 Route::get('/profile', function () {

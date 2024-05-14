@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'F-Our Talk')
 @section('content')
-    <div class="font-[Poppins] bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] p-20">
+    <div class="font-[Poppins] bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] min-h-screen p-20">
         <div class="border-4 border-white p-3 rounded-xl">
             <div class="flex justify-center">
                 <div class="bg-white rounded-full p-10 flex items-center justify-center">

@@ -21,9 +21,6 @@
     <div class="main-content transition-all duration-1000 ml-0 flex-1">
         @yield('content')
     </div>
-</div>
-
-
     
 </body>
 </html>

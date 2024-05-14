@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'F-Our Talk')
 @section('content')
-    <div class="font-[Poppins] bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] p-20">
+    <div class="font-[Poppins] bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] min-h-screen p-20">
         @if (session()->has('success'))
             <div class="bg-green-200 text-green-800 px-4 py-2 rounded-md mb-4">
                 {{ session('success') }}

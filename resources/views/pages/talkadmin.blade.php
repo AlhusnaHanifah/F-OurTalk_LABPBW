@@ -12,7 +12,7 @@
 
     </style>
     <div
-        class="font-[Poppins] min-h-screen bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] min-h-screen p-20">
+        class="font-[Poppins] min-h-screen bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] p-20">
         <div class="p-20">
             <div class="text-left ml-4 md:ml-100 mt-3">
 
@@ -25,19 +25,15 @@
         @endif
         @foreach($talks as $talk)
             <div class="inset-0 border-4 border-black mx-60 mb-10 p-10 rounded-2xl">
-                <p>By: {{ $talk->user->username }}</p>
+                <p class="text-gray-800 font-bold"> 
+                    <i class="bi bi-person-circle"></i>
+                    {{ $talk->user->username }}
+                </p>
                 <h1>{{ $talk->value }}</h1>
                 
                 <!-- Tombol untuk menampilkan atau menyembunyikan komentar -->
                 <button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md mt-2 toggle-comments">Show/Hide Comments</button>
 
-                 <!-- Tombol delete -->
-            <form action="{{ route('admindelete', ['id' => $talk->id]) }}" method="POST" class="inline">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md mt-2">Delete</button>
-    </form>
-                
                 <!-- Tampilkan komentar jika tersedia -->
                 @if ($talk->comments && $talk->comments->isNotEmpty())
                     <div class="comments hidden mt-4">
@@ -50,6 +46,18 @@
                 @else
                     <p>No comments yet.</p>
                 @endif
+
+                <!-- Delete button with confirmation alert -->
+                <button type="button" class="bg-red-500 text-white px-4 py-2 rounded-md mt-2 top-2 right-2 group" onclick="confirmDelete('{{ route('admindelete', ['id' => $talk->id]) }}')">
+                    Delete talk
+                </button>
+                
+                <!-- Form to delete the talk -->
+                <form id="delete-form-{{ $talk->id }}" action="{{ route('admindelete', ['id' => $talk->id]) }}" method="POST" class="hidden">
+                    @csrf
+                    @method('DELETE')
+                </form>
+                
             </div>
         @endforeach
     </div>
@@ -64,5 +72,23 @@
                 comments.classList.toggle('hidden');
             });
         });
+
+        // Function to confirm deletion
+        function confirmDelete(routeUrl) {
+            Swal.fire({
+                title: 'Confirm Deletion',
+                text: 'Are you sure you want to delete this talk?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#aaa',
+                confirmButtonText: 'Yes, delete it',
+                cancelButtonText: 'No, cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(`delete-form-${routeUrl.split('/').pop()}`).submit();
+                }
+            });
+        }
     </script>
 @endsection

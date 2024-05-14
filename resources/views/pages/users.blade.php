@@ -27,11 +27,17 @@
                                 <td class="px-6 py-4 whitespace-no-wrap">{{ $user->name }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap">{{ $user->username }}</td>
                                 <td class="px-3 py-4 whitespace-no-wrap">
-                                    <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" class="delete-form">
+                                <!-- Delete button with confirmation alert -->
+                                    <button type="button" class="bg-red-500 text-white px-4 py-2 rounded-md mt-2 top-2 right-2 group" onclick="confirmDelete('{{ route('admin.users.delete', $user->id) }}')">
+                                        Delete User
+                                    </button>
+                                    
+                                    <!-- Form to delete the talk -->
+                                    <form id="delete-form-{{ $user->id }}" action="{{ route('admin.users.delete', $user->id) }}" method="POST" class="hidden">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button" class="bg-red-500 text-white px-4 py-2 rounded-md delete-btn" id="delete">Delete</button>
                                     </form>
+                            
                                 </td>
                             </tr>
                         @endforeach
@@ -43,16 +49,23 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const deleteButtons = document.querySelectorAll('.delete-btn');
 
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                if (confirm('Are you sure you want to delete this user?')) {
-                    this.closest('form').submit();
+    // Function to confirm deletion
+        function confirmDelete(routeUrl) {
+            Swal.fire({
+                title: 'Confirm Deletion',
+                text: 'Are you sure you want to delete this user?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#aaa',
+                confirmButtonText: 'Yes, delete it',
+                cancelButtonText: 'No, cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(`delete-form-${routeUrl.split('/').pop()}`).submit();
                 }
             });
-        });
-    });
+        }
 </script>
 @endsection

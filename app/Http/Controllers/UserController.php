@@ -33,14 +33,14 @@ class UserController extends Controller
         return view('pages.dashboard', compact('totalUsers', 'totalTalks'));
     }
     public function destroy($id)
-{
-    // Temukan pengguna berdasarkan ID
-    $user = User::findOrFail($id);
+    {
+        // Temukan pengguna berdasarkan ID
+        $user = User::findOrFail($id);
 
-    // Hapus pengguna
-    $user->delete();
+        // Hapus pengguna
+        $user->delete();
 
-    return redirect()->route('users.index')
-                     ->with('success','User deleted successfully');
-}
+        return redirect()->route('users.index')
+                        ->with('success','User deleted successfully');
+    }
 }

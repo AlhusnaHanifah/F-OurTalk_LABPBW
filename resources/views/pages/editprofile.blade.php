@@ -31,7 +31,7 @@
                 <div class="inset-0 mx-40 mb-5">
                     <h1>Current Password:</h1>
                     <div class="inset-0 border-4 border-black rounded-xl p-2">
-                        <input class="bg-transparent ml-3" id="old_password" type="password" name="old_password" required>
+                        <input class="bg-transparent ml-3 w-11/12" id="old_password" type="password" name="old_password" required>
                     </div>
                     @error('old_password')
                         <span style="display: block; color: red; font-size: 0.875rem; margin-top: 0.25rem;">{{ $message }}</span>
@@ -41,13 +41,13 @@
                 <div class="inset-0  mx-40 mb-5">
                     <h1>New Password:</h1>
                     <div class="inset-0 border-4 border-black rounded-xl p-2">
-                        <input class="bg-transparent ml-3" id="password" type="password" name="password" required>
+                        <input class="bg-transparent ml-3 w-11/12" id="password" type="password" name="password" required>
                     </div>
                 </div>
                 <div class="inset-0  mx-40 mb-5">
                     <h1>Confirm Password:</h1>
                     <div class="inset-0 border-4 border-black rounded-xl p-2">
-                        <input class="bg-transparent ml-3" id="password_confirmation" type="password"
+                        <input class="bg-transparent ml-3 w-11/12" id="password_confirmation" type="password"
                             name="password_confirmation" required>
                     </div>
                 </div>

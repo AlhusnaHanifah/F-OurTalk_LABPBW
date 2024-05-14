@@ -45,9 +45,13 @@
             </div>
         @endforeach
 
-        <a href="{{ route('talks.create') }}" class="bg-blue-500 text-white text-lg rounded-full w-16 h-16 fixed bottom-10 right-20 flex items-center justify-center">
+        <a href="{{ route('talks.create') }}" class="bg-blue-500 text-white text-lg rounded-full w-16 h-16 fixed bottom-10 right-20 flex items-center justify-center group">
             <i class="bi bi-pen"></i>
+            <span class="absolute w-32 bg-blue-500 text-white text-sm rounded-md px-2 py-1 bottom-16 right-1/2 transform translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Add New Talk
+            </span>
         </a>
+
     </div>
 
     <!-- Script untuk menangani tampilan komentar dan pop-up -->

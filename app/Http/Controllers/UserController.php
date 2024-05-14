@@ -24,7 +24,7 @@ class UserController extends Controller
     public function count()
     {
         // Mengambil jumlah user dari tabel users
-        $totalUsers = User::count();
+        $totalUsers = User::where('usertype', '<>', 'admin')->count();
 
         // Mengambil jumlah talk dari tabel talks
         $totalTalks = Talk::count();

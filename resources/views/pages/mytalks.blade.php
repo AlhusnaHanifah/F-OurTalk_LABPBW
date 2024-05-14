@@ -32,9 +32,18 @@
                 </div>
                 
                 <!-- Delete button with confirmation alert -->
-                <button type="button" class="bg-red-500 text-white px-4 py-2 rounded-md mt-2 absolute top-2 right-2" onclick="confirmDelete('{{ route('talks.delete', $talk->id) }}')">
+                <button type="button" class="bg-red-500 text-white px-4 py-2 rounded-md mt-2 absolute top-2 right-2 group" onclick="confirmDelete('{{ route('talks.delete', $talk->id) }}')">
                     <i class="bi bi-trash-fill"></i>
+                    <span class="absolute w-16 bg-red-500 text-white text-sm rounded-md px-2 py-1 bottom-12 right-1/2 transform translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Delete
+                    </span>
                 </button>
+                
+                <!-- Form to delete the talk -->
+                <form id="delete-form-{{ $talk->id }}" action="{{ route('talks.delete', $talk->id) }}" method="POST" class="hidden">
+                    @csrf
+                    @method('DELETE')
+                </form>
             </div>
             <div class="inset-0 mx-60 p-2 mb-10 rounded-2xl relative">
                 
@@ -43,8 +52,11 @@
                     @csrf
                     <div class="flex items-center">
                         <textarea name="komentar" placeholder="Write your comment here..." class="w-full border-2 border-gray-300 rounded-md p-1 bg-opacity-50 bg-white mr-2"></textarea>
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md group relative">
                             <i class="bi bi-send"></i> 
+                            <span class="tooltip absolute w-16 bg-blue-500 text-white text-sm rounded-md px-2 py-1 bottom-12 right-1/2 transform translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                Send
+                            </span>
                         </button>
                     </div>
                 </form>
@@ -52,8 +64,11 @@
             </div>
         @endforeach
 
-        <a href="{{ route('talks.create') }}" class="bg-blue-500 text-white text-lg rounded-full w-16 h-16 fixed bottom-10 right-20 flex items-center justify-center">
+        <a href="{{ route('talks.create') }}" class="bg-blue-500 text-white text-lg rounded-full w-16 h-16 fixed bottom-10 right-20 flex items-center justify-center group">
             <i class="bi bi-pen"></i>
+            <span class="absolute w-32 bg-blue-500 text-white text-sm rounded-md px-2 py-1 bottom-16 right-1/2 transform translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Add New Talk
+            </span>
         </a>
     </div>
 
@@ -114,7 +129,7 @@
                 cancelButtonText: 'No, cancel'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = routeUrl;
+                    document.getElementById(`delete-form-${routeUrl.split('/').pop()}`).submit();
                 }
             });
         }

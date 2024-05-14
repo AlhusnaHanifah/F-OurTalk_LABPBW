@@ -3,21 +3,21 @@
 @section('title', 'User Management')
 
 @section('content')
-<div class="font-[Poppins] h-screen bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] flex justify-right items-start flex-col">
-    <div class="p-20">
+<div class="font-[Poppins] h-screen bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] flex justify-start items-start flex-col"> <!-- Changed justify-right to justify-start -->
+    <div class="w-full p-20"> <!-- Ensured the container is full width -->
        
         <!-- Content -->
-        <div class="w-full p-8"> <!-- Changed w-3/4 to w-full -->
+        <div class="w-4/5 p-8"> <!-- Ensured the content container is full width -->
             <h1 class="text-3xl font-semibold mb-6">User Management</h1>
 
             <div class="overflow-x-auto">
-                <table class="w-full bg-white rounded-xl shadow-md"> <!-- Changed min-w-full to w-full -->
+                <table class="w-full bg-white rounded-xl shadow-md"> <!-- Full width table -->
                     <thead>
                         <tr>
                             <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">ID</th>
                             <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
                             <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Username</th>
-                            <th class="px-6 py-3 bg-gray-100"></th>
+                            <th class="px-3 py-3 bg-gray-100"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,7 +26,7 @@
                                 <td class="px-6 py-4 whitespace-no-wrap">{{ $user->id }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap">{{ $user->name }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap">{{ $user->username }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap">
+                                <td class="px-3 py-4 whitespace-no-wrap">
                                     <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" class="delete-form">
                                         @csrf
                                         @method('DELETE')

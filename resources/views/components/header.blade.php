@@ -9,10 +9,10 @@
                 class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center px-5">
                 <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
                     <li>
-                        <a class="text-lg font-semibold text-brown-800 hover:text-blue-300" href="{{ route('mytalks') }}">My Talk</a>
+                        <a class="text-lg font-semibold text-brown-800 hover:text-blue-300" href="{{ route('home') }}">Our Talk</a>
                     </li>
                     <li>
-                        <a class="text-lg font-semibold text-brown-800 hover:text-blue-300" href="{{ route('home') }}">Our Talk</a>
+                        <a class="text-lg font-semibold text-brown-800 hover:text-blue-300" href="{{ route('mytalks') }}">My Talk</a>
                     </li>
                 </ul>
             </div>

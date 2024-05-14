@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -77,5 +78,32 @@ class AuthController extends Controller
 
         return redirect()->route('login');
     }
+
+    public function update(Request $request)
+    {
+        $validation = $request->validate([
+            'old_password' => 'required',
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Dapatkan pengguna yang saat ini masuk
+        $user = Auth::user();
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'The current password is incorrect.']);
+        }
+
+        // Perbarui pengguna
+        $user->update([
+            'name' => $validation['name'],
+            'username' => $validation['username'],
+            'password' => bcrypt($validation['password']),
+        ]);
+
+        return redirect(route('profile'));
+    }
+
 }
 

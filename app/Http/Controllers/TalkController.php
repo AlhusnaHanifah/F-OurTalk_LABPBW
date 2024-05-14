@@ -11,7 +11,8 @@ class TalkController extends Controller
 {
     public function index()
     {
-        $talks = Talk::with('comments')->get();
+        // Get talks with comments, ordered by the latest ones
+        $talks = Talk::with('comments')->orderBy('created_at', 'desc')->get();
         return view('pages.home', compact('talks'));
     }
     
@@ -37,9 +38,14 @@ class TalkController extends Controller
     }
     public function myTalks()
     {
-     $user = Auth::user();
-     $talks = Talk::where('user_id', $user->id)->with('comments')->get();
-     return view('pages.mytalks', compact('talks'));
+        $user = Auth::user();
+        // Get talks by the authenticated user, ordered by the latest ones
+        $talks = Talk::where('user_id', $user->id)
+        ->with('comments')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        return view('pages.mytalks', compact('talks'));
     }
 
  

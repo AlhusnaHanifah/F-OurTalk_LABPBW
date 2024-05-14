@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 @section('title', 'F-Our Talk')
 @section('content')
-<style>
+    <style>
         .notifications {
             position: fixed;
-            top: 20px;
-            right: 200px;
+            top: 30px;
+            margin: auto;
             z-index: 9999; /* Pastikan nilai z-index lebih tinggi daripada sidebar */
-            width: 1200px;
+            width: 800px;
         }
 
     </style>
@@ -59,7 +59,16 @@
                 </form>
                 
             </div>
+
         @endforeach
+
+        @if($talks -> isEmpty())
+            <div class="inset-0 border-4 border-white mx-60 p-5 rounded-2xl relative">
+                <p class="text-gray-800 font-bold"> 
+                    No talks yet.
+                </p>    
+            </div
+        @endif
     </div>
 
     <!-- Script untuk menangani tampilan komentar dan pop-up -->

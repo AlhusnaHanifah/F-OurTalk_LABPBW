@@ -1,13 +1,12 @@
 @extends('layouts.admin')
 @section('title', 'Admin F-OurTalk')
 @section('content')
-    <div
-        class="font-[Poppins] min-h-screen bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] flex justify-left items-start flex-col">
+    <div class="font-[Poppins] w-full min-h-screen bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] flex justify-start items-start flex-col">
         <div class="p-20">
-            <div class="text-left ml-4 md:ml-60 mt-3">
+            <div class="text-left ml-4 md:ml-30 mt-3">
                 <h1 class="text-2xl md:text-4xl font-semibold">Dashboard</h1>
             </div>
-            <div class="relative p-70 top-[70px] right-[-310px]">
+            <div class="relative p-70 top-[70px]">
             <a href="{{ route('users.index') }}">
                 <div
                     class="flex flex-col px-6 py-6 overflow-hidden bg-white hover:bg-gradient-to-br hover:from-purple-400 hover:via-blue-400 hover:to-blue-500 rounded-xl shadow-lg duration-300 hover:shadow-2xl group">

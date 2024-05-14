@@ -41,6 +41,11 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @if($users -> isEmpty())
+                            <p class="text-gray-800 font-bold"> 
+                                No users yet.
+                            </p>    
+                        @endif
                     </tbody>
                 </table>
             </div>

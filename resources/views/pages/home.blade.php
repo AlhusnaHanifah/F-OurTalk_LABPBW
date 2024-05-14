@@ -52,6 +52,14 @@
             </span>
         </a>
 
+        @if($talks -> isEmpty())
+            <div class="inset-0 border-4 border-white mx-60 p-5 rounded-2xl relative">
+                <p class="text-gray-800 font-bold"> 
+                    No talks yet.
+                </p>    
+            </div
+        @endif
+
     </div>
 
     <!-- Script untuk menangani tampilan komentar dan pop-up -->

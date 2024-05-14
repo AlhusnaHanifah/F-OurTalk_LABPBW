@@ -1,9 +1,25 @@
 @extends('layouts.admin')
 @section('title', 'F-Our Talk')
 @section('content')
-    <div class="font-[Poppins] bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] p-20">
+<style>
+        .notifications {
+            position: fixed;
+            top: 20px;
+            right: 200px;
+            z-index: 9999; /* Pastikan nilai z-index lebih tinggi daripada sidebar */
+            width: 1200px;
+        }
+
+    </style>
+    <div
+        class="font-[Poppins] min-h-screen bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] min-h-screen p-20">
+        <div class="p-20">
+            <div class="text-left ml-4 md:ml-100 mt-3">
+
+            
+    
         @if (session()->has('success'))
-            <div class="bg-green-200 text-green-800 px-4 py-2 rounded-md mb-4">
+            <div class="notifications bg-green-200 text-green-800 px-4 py-2 rounded-md mb-4 ml-auto">
                 {{ session('success') }}
             </div>
         @endif

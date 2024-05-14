@@ -42,8 +42,14 @@ Route::middleware('admin')->group(function () {
     Route::get('/admintalk', [AdmintalkController::class, 'index'])->name('admintalk');
     Route::delete('/admindelete/{id}', [AdmintalkController::class, 'delete'])->name('admindelete');
 
+
     Route::get('/count', [UserController::class, 'count'])->name('users.count');
     Route::get('/dashboard', [UserController::class, 'count'])->name('dashboard');
+
+
+    Route::get('/count', [UserController::class, 'count'])->name('users.count');
+    Route::get('/dashboard', [UserController::class, 'count'])->name('dashboard');
+
 });
 
 Route::get('/profile', function () {
